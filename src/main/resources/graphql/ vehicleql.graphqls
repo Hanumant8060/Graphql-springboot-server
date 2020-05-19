@@ -3,8 +3,9 @@ id: ID!,
 type: String,
 modelCode: String,
 brandName: String,
-
 }
+
+
 type Query {
 vehicles:[Vehicle]
 vehicle(id: ID):Vehicle
@@ -16,4 +17,8 @@ createVehicle(type: String!, modelCode: String!, brandName: String):Vehicle
 
 type Mutation {
 deleteVehicle(id:Int!):String
+}
+
+type Mutation {
+updateInfo(id: Int! ,type: String!, modelCode: String!, brandName: String):Vehicle
 }

@@ -38,4 +38,19 @@ public class VehicleService {
 		vehicleRepository.deleteById(id);
 		return "Vehicle deleted";
 	}
+    @Transactional
+	public Vehicle updateInfo( final int id,String type, String modelCode, String brandName) {
+		Optional<Vehicle> vehicleId = vehicleRepository.findById(id);
+		if(vehicleId.isPresent()) {
+//			Vehicle vehicle = vehicleId.get();
+//			vehicle.setBrandName(brandName);
+//			vehicle.setModelCode(modelCode);
+//			vehicle.setType(type);
+			vehicleId.get().setType(type);
+			vehicleId.get().setBrandName(brandName);
+			vehicleId.get().setModelCode(modelCode);
+		}
+		
+		return this.vehicleRepository.save(vehicleId.get());
+	}
 }
